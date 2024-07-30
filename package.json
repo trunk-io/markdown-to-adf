@@ -1,0 +1,57 @@
+{
+  "name": "md-to-adf",
+  "version": "0.0.1",
+  "description": "A simple library for converting markdown to Atlassian Document Format (ADF)",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/esm/index.js"
+    }
+  },
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build:lib": "tsup --minify",
+    "build:types": "tsc -p tsconfig.cjs.json --emitDeclarationOnly --outDir dist/types",
+    "build": "concurrently \"npm:build:*\"",
+    "dev:lib": "tsup --watch",
+    "dev:types": "tsc -p tsconfig.cjs.json --emitDeclarationOnly --outDir dist/types --watch",
+    "dev": "concurrently \"npm:dev:*\"",
+    "test": "mocha -r tsx tests/**/*.spec.ts --exit",
+    "lint": "eslint src"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "mdast-util-from-markdown": "2.0.1",
+    "mdast": "3.0.0"
+  },
+  "devDependencies": {
+    "@types/chai": "4.3.16",
+    "@types/mdast": "4.0.4",
+    "@types/mocha": "10.0.7",
+    "@types/node": "20.14.10",
+    "@typescript-eslint/eslint-plugin": "7.4.0",
+    "@typescript-eslint/parser": "7.4.0",
+    "chai": "5.1.1",
+    "concurrently": "8.2.2",
+    "eslint":"8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.1.3",
+    "mocha": "10.6.0",
+    "prettier": "3.3.3",
+    "prettier-eslint": "16.3.0",
+    "tslib": "2.6.3",
+    "tsup": "8.2.3",
+    "tsx": "4.16.2",
+    "typescript": "5.5.4"
+  },
+  "packageManager": "pnpm@9.6.0",
+  "engines": {
+    "node": ">=20"
+  }
+}
