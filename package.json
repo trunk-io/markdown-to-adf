@@ -1,5 +1,5 @@
 {
-  "name": "md-to-adf",
+  "name": "markdown-to-adf",
   "version": "0.0.1",
   "description": "A simple library for converting markdown to Atlassian Document Format (ADF)",
   "module": "dist/esm/index.js",
