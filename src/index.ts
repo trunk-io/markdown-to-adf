@@ -15,7 +15,8 @@ import type {
   ADFTextNode,
   ADFTopLevelBlockNode,
 } from './types'
-import { fromMarkdown } from 'mdast-util-from-markdown'
+
+
 
 function mapMDASTNodeToADFNodes(node: MDASTNode, blockParent: boolean = false): ADFNode[] {
   switch (node.type) {
@@ -262,7 +263,8 @@ function mapMDASTNodeToADFNodes(node: MDASTNode, blockParent: boolean = false): 
   }
 }
 
-export function markdownToADF(markdown: string): ADFRoot {
+export async function markdownToADF(markdown: string): Promise<ADFRoot> {
+  const {fromMarkdown} = (await import('mdast-util-from-markdown'));
   const mdAST: Root = fromMarkdown(markdown)
   const adfRoot: ADFRoot = {
     type: 'doc',
