@@ -1,6 +1,7 @@
 {
-  "name": "markdown-to-adf",
+  "name": "@trunkio/markdown-to-adf",
   "version": "0.0.1",
+  "private": false,
   "description": "A simple library for converting markdown to Atlassian Document Format (ADF)",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
@@ -16,22 +17,18 @@
     "dist/**"
   ],
   "scripts": {
-    "build:lib": "tsup --minify",
-    "build:types": "tsc -p tsconfig.cjs.json --emitDeclarationOnly --outDir dist/types",
-    "build": "concurrently \"npm:build:*\"",
-    "dev:lib": "tsup --watch",
-    "dev:types": "tsc -p tsconfig.cjs.json --emitDeclarationOnly --outDir dist/types --watch",
-    "dev": "concurrently \"npm:dev:*\"",
-    "test": "mocha -r tsx tests/**/*.spec.ts --exit",
-    "lint": "eslint src"
+    "build": "tsc --emitDeclarationOnly --declaration --outDir dist/types && trunk-tsc",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' trunk-jest"
   },
-  "license": "UNLICENSED",
   "dependencies": {
     "mdast-util-from-markdown": "2.0.1",
     "mdast": "3.0.0"
   },
   "devDependencies": {
+    "@trunkio/infra-build-jest": "workspace:*",
+    "@trunkio/infra-build-tsc": "workspace:*",
     "@types/chai": "4.3.16",
+    "@jest/globals": "^29.7.0",
     "@types/mdast": "4.0.4",
     "@types/mocha": "10.0.7",
     "@types/node": "20.14.10",
